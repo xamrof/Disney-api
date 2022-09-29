@@ -1,5 +1,5 @@
 const { request, response} = require('express')
-const {Character} = require('../db')
+const {Character, Movie} = require('../db')
 
 
 const getCharacters = async (req = request, res) => {
@@ -39,6 +39,37 @@ const getCharacters = async (req = request, res) => {
                 return res.status(404).json({msg: `There are no characters with a weight of ${weight}`})
             }
             return res.json(character)
+        }
+
+        if(movies){
+
+             const {chars} = await Movie.findOne({
+                where: {
+                    id: movies
+                }
+             })
+
+             const result = await Character.findAll({
+                where: {
+                    name: chars
+                },
+                attributes: [
+                    "name",
+                    "image",
+                    "age",
+                    "weight",
+                    "History",
+                ]
+             })
+
+             //AGREGAR QUE PASA CUANDO NO SE ENCUENTRA UNO DE LOS PERSONAJES
+
+             if(result.length === 0){
+                return res.status(404).json({msg: 'These characters do not exist in the database'})
+             }
+
+                         
+            return res.json(result)
         }
 
         const character = await Character.findAll({

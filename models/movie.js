@@ -6,7 +6,10 @@ function MovieModel(sequelize) {
         title: DataTypes.STRING,
         date: DataTypes.STRING,
         rating: DataTypes.INTEGER,
-        genreName: DataTypes.STRING
+        genreName: DataTypes.STRING,
+        chars:{ 
+            type: DataTypes.ARRAY(DataTypes.STRING)
+        }
     },{
         timestamps: false
     })

@@ -52,6 +52,7 @@ const getMovie = async (req = request, res) => {
             "date",
             "rating",
             "genreName",
+            "chars"
         ]
     })
 
@@ -67,22 +68,20 @@ const postMovie = async (req = request, res) => {
 
     const {genreName} = req.body
 
+    const createMovie = await Movie.create(req.body)
+
     const {id} = await Genre.findOne({
         where: {
-            name : genreName
+            name : genreName.toLowerCase()
         }
     })
-
-    const createMovie = await Movie.create(req.body)
 
     createMovie.set({
         genreId : id
     })
 
     await createMovie.save()
-
-
-
+    
     res.json(createMovie)
 
 }

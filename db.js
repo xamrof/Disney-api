@@ -3,16 +3,18 @@ const {Sequelize} = require('sequelize')
 const {CharacterModel} = require('./models/character');
 const {MovieModel} = require('./models/movie')
 const {GenreModel} = require('./models/genre')
+const {UserModel} = require('./models/user')
 
 
-const sequelize = new Sequelize('disneyWorld', 'root', 'Kaguya.23', {
+const sequelize = new Sequelize('DisneyWorld', 'postgres', 'Kaguya.23', {
     host: 'localhost',
-    dialect: 'mysql'
+    dialect: 'postgres'
 })
 
 const Character = CharacterModel(sequelize)
 const Movie = MovieModel(sequelize)
 const Genre = GenreModel(sequelize)
+const User = UserModel(sequelize)
 
 Genre.hasMany(Movie,{
     foreignKey: 'genreId'
@@ -20,15 +22,11 @@ Genre.hasMany(Movie,{
 
 Movie.belongsTo(Genre)
 
-Character.belongsToMany(Movie, {through: 'CharacterMovies'});
-Movie.belongsToMany(Character, {through: 'CharacterMovies'});
-
-
-
 
 module.exports = {
     sequelize,
     Character,
     Movie,
-    Genre
+    Genre,
+    User
 }

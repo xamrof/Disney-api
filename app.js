@@ -1,4 +1,6 @@
 require('dotenv').config()
+
+
 const express = require('express');
 
 const app = express()
@@ -19,7 +21,7 @@ app.use('/', apiRouter)
 
 async function main(){
     try {
-        await sequelize.sync({alter: true})
+        await sequelize.sync({alter: false})
         console.log('Connection has been established successfully')
         app.listen(port)
     } catch (error) {

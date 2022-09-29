@@ -21,7 +21,7 @@ function CharacterModel(sequelize)  {
             type: DataTypes.STRING(256)
         },
         CharMovies: {
-            type: DataTypes.ARRAY
+            type: DataTypes.ARRAY(DataTypes.STRING)
         }
 
     },{

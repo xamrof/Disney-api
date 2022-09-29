@@ -1,5 +1,7 @@
 const router = require('express').Router();
 
+const {validateJWT} = require('../middlewares/validate-jwt')
+
 const {
     getCharacters,
     getCharacter,
@@ -10,11 +12,26 @@ const {
 
 
 
-router.get('/', getCharacters)
-router.get('/:id', getCharacter)
-router.post('/', postCharacter)
-router.put('/:id', putCharacter)
-router.delete('/:id', deleteCharacter)
+router.get('/',[
+    validateJWT
+], getCharacters)
+
+router.get('/:id',[
+    validateJWT
+], getCharacter)
+
+router.post('/',[
+    validateJWT
+], postCharacter)
+
+
+router.put('/:id',[
+    validateJWT
+], putCharacter)
+
+router.delete('/:id',[
+    validateJWT
+], deleteCharacter)
 
 
 
