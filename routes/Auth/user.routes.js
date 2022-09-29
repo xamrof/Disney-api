@@ -1,11 +1,14 @@
 const router = require('express').Router()
 const {check} = require('express-validator')
 const {validateFields} = require('../../middlewares/validate-fields')
+const {userIdExist} = require('../../helpers/db-validators')
 
 
 const {
     getUser,
-    postUser
+    postUser,
+    putUser,
+    deleteUser
 } = require('../../controllers/Auth/user.controller')
 
 
@@ -19,6 +22,17 @@ router.post('/',[
     validateFields
 ], postUser)
 
+
+router.put('/:id',[
+    check('id').custom(userIdExist),
+    validateFields
+],putUser)
+
+
+router.delete('/:id',[
+    check('id').custom(userIdExist),
+    validateFields
+],deleteUser)
 
 
 
