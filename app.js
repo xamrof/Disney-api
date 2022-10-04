@@ -23,7 +23,7 @@ async function main(){
     try {
         await sequelize.sync({alter: false})
         console.log('Connection has been established successfully')
-        app.listen(port)
+        app.listen(process.env.PORT)
     } catch (error) {
         console.error('Unable to connect to the database', error)
     }

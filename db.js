@@ -6,7 +6,7 @@ const {GenreModel} = require('./models/genre')
 const {UserModel} = require('./models/user')
 
 
-const sequelize = new Sequelize('DisneyWorld', 'postgres', 'Kaguya.23', {
+const sequelize = new Sequelize('DisneyWorld', 'postgres', process.env.PASSWORD, {
     host: 'localhost',
     dialect: 'postgres'
 })

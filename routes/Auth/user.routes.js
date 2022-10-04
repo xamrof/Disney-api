@@ -1,4 +1,5 @@
 const router = require('express').Router()
+
 const {check} = require('express-validator')
 const {validateFields} = require('../../middlewares/validate-fields')
 const {userIdExist} = require('../../helpers/db-validators')

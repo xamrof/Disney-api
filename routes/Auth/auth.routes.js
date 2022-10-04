@@ -1,4 +1,4 @@
-const { login } = require('../../controllers/Auth/auth.controller');
+const { login } = require('../../controllers/Auth/auth.controller')
 const {check} = require('express-validator')
 const {validateFields} = require('../../middlewares/validate-fields')
 

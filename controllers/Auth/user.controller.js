@@ -1,7 +1,7 @@
 const {User} = require('../../db')
 const bcryptjs = require('bcryptjs')
 const {response, request} = require('express')
-
+const {sendMail} = require('../../helpers/sendmail')
 
 
 const getUser = async (req, res) => {
@@ -28,6 +28,8 @@ const postUser = async (req = request, res = response) => {
     user.password = bcryptjs.hashSync(password, salt)
 
     await user.save()
+
+    await sendMail(email)
 
     res.json(user)
 

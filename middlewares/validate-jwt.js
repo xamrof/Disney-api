@@ -26,7 +26,6 @@ const validateJWT = async (req = request, res = response, next) => {
         }
         
         req.user = user
-        next();
 
     } catch (error) {
         console.log(error)
@@ -34,6 +33,8 @@ const validateJWT = async (req = request, res = response, next) => {
             msg: 'Invalid token'
         })
     }
+
+    next()
 
 }
 

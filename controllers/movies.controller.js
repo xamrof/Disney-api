@@ -1,8 +1,6 @@
 const { request, response} = require('express')
 const {Movie, Genre} = require('../db') 
 
-const {Op} = require('sequelize');
-
 const getMovies = async (req, res = response) => {
 
     const {name, genre, order = 'ASC'} = req.query
