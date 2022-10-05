@@ -4,12 +4,13 @@ require('dotenv').config()
 const express = require('express');
 
 const app = express()
-const port = 3000;
 
 const apiRouter = require('./routes/api');
 
 require('./db')
 const {sequelize} = require('./db')
+
+//MIDDLEWARES
 
 app.use(express.static('public'))
 app.use(express.json())

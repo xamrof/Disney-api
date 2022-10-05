@@ -6,7 +6,7 @@ const sendMail = (to) => {
 
     const msg = {
         to: to,
-        from: 'your email approved in sendgrid', 
+        from: 'codingxam@gmail.com', 
         subject: 'Disney Api',
         text: 'Welcome to the Disney Api',
         html: '<strong>Welcome to disney api, here you can view, add, edit or delete disney characters.</strong>',

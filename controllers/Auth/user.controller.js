@@ -29,7 +29,7 @@ const postUser = async (req = request, res = response) => {
 
     await user.save()
 
-    // await sendMail(email)
+    await sendMail(email)
 
     res.json(user)
 
